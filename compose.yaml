@@ -24,8 +24,8 @@ services:
     restart: on-failure
     develop:
       watch:
-        - action: sync
-          path: ./usr/src/app
+        - action: rebuild
+          path: ./
           target: ./usr/src/app
           ignore:
             - node_modules/
