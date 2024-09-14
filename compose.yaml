@@ -1,0 +1,12 @@
+services:
+  api:
+    build:
+      context: .
+    env_file: .env
+    environment:
+      NODE_ENV: ${NODE_ENV}
+    ports:
+      - "3001:3001"
+
+volumes:
+  db_data:
