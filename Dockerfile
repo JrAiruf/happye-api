@@ -1,4 +1,4 @@
-FROM node:20.17.0 as base
+FROM node:20.17.0
 
 EXPOSE 3001
 

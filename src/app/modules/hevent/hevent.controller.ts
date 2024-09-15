@@ -2,8 +2,13 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { HeventService } from './hevent.service';
 import { CreateHeventDto } from './dto/create-hevent.dto';
 import { UpdateHeventDto } from './dto/update-hevent.dto';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('hevent')
+@ApiTags("Hevent")
+@Controller({
+  version: '1',
+  path: 'hevent'
+})
 export class HeventController {
   constructor(private readonly heventService: HeventService) { }
 
