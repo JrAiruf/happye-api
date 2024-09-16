@@ -15,7 +15,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.prod
     environment:
       NODE_ENV: ${NODE_ENV}
       HOST: ${HOST}
