@@ -15,5 +15,5 @@ export class Hevent {
     @Column({ type: 'datetime' })
     eventHour: Date
     @Column()
-    amountOfPeople?: number
+    amountOfPeople: number
 }

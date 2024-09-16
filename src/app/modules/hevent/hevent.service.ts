@@ -1,11 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { CreateHeventDto } from './dto/create-hevent.dto';
 import { UpdateHeventDto } from './dto/update-hevent.dto';
+import { Hevent } from './entities/hevent.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class HeventService {
-  create(createHeventDto: CreateHeventDto) {
-    return 'This action adds a new hevent';
+
+  constructor(
+    @InjectRepository(Hevent)
+    private readonly repository: Repository<Hevent>
+  ) { }
+
+  
+  async create(hevent: Hevent): Promise<Hevent | null> {
+    try {
+      const newHevent = this.repository.create(hevent);
+      return await this.repository.save(newHevent);
+    } catch (error) {
+      return null;
+    }
   }
 
   findAll() {

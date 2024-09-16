@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { databaseProvider } from './providers/database.provider';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Hevent } from '../hevent/entities/hevent.entity';
 
