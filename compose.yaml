@@ -1,5 +1,5 @@
 services:
-  database:
+  happye_db:
     image: mysql
     ports:
       - "3306:3306"
@@ -19,12 +19,19 @@ services:
     env_file: .env
     environment:
       NODE_ENV: ${NODE_ENV}
+      HOST: ${HOST}
+      DATABASE: ${DATABASE}
+      USERNAME: ${USERNAME}
+      PASSWORD: ${PASSWORD}
+      DBPORT: ${DBPORT}
+      APPLICATION_PORT: ${APPLICATION_PORT}
+      
     depends_on:
-      - database
+      - happye_db
     restart: on-failure
     develop:
       watch:
-        - action: rebuild
+        - action: sync
           path: ./
           target: ./usr/src/app
           ignore:
