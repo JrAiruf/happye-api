@@ -1,0 +1,35 @@
+services:
+  happye_db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      - MYSQL_USER=${USERNAME}
+      - MYSQL_PASSWORD=${PASSWORD}
+      - MYSQL_DATABASE=${DATABASE}
+      - MYSQL_ROOT_USER=${USERNAME}
+      - MYSQL_ROOT_PASSWORD=${PASSWORD}
+    
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      HOST: ${HOST}
+      DATABASE: ${DATABASE}
+      USERNAME: ${USERNAME}
+      PASSWORD: ${PASSWORD}
+      DBPORT: ${DBPORT}
+      APPLICATION_PORT: ${APPLICATION_PORT}
+      
+    depends_on:
+      - happye_db
+    restart: on-failure
+    ports:
+      - "3001:3001"
+
+volumes:
+  db_data:
