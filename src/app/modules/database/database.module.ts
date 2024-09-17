@@ -20,23 +20,5 @@ import { Hevent } from '../hevent/entities/hevent.entity';
         })
     ]
 })
+
 export class DatabaseModule { }
-
-/* 
-USE TO RUN WITHOUT DOCKER
-TypeOrmModule.forRoot({
-            type: 'mysql',
-            host: "localhost",
-            port: 3306,
-            username: "yourusername",
-            password: "yourpassword",
-            database: "yourdatabasename",
-            entities: [
-                Hevent
-            ],
-            synchronize: true/false,
-            logging: true,
-            logger: 'advanced-console'
-        })
-
-*/
