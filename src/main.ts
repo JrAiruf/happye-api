@@ -4,9 +4,9 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as dotenv from 'dotenv';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-
   dotenv.config();
+  
+  const app = await NestFactory.create(AppModule);
   
   const devMode = process.env.DEV_MODE ?? false;
 
