@@ -4,7 +4,7 @@ import { Hevent } from '../entities/hevent.entity';
 import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { BadRequestException } from '@nestjs/common';
-import { heventId, invalidMockHevent, mockHevent } from './mocks/hevent.mocks';
+import { invalidMockHevent, mockHevent } from './mocks/hevent.mocks';
 
 describe('heventService', () => {
   let heventService: HeventService;
@@ -41,13 +41,13 @@ describe('heventService', () => {
     it('should return a new Hevent', async () => {
       jest.spyOn(repository, 'create').mockReturnValue(mockHevent);
       jest.spyOn(repository, 'save').mockReturnValue(Promise.resolve(mockHevent));
-      jest.spyOn(repository, 'findOne').mockReturnValue(Promise.resolve(mockHevent));
 
       const result = await heventService.create(mockHevent);
 
       expect(result.id).toEqual(mockHevent.id);
       expect(result.title).toEqual(mockHevent.title);
       expect(result.description).toEqual(mockHevent.description);
+      expect(result.speechers.length).toBeGreaterThanOrEqual(1);
     })
   })
 
