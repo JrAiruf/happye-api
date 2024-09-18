@@ -1,8 +1,8 @@
 import { IsNotEmpty } from 'class-validator';
 import { Hevent } from "../entities/hevent.entity";
 import { ApiProperty } from '@nestjs/swagger';
-import { Speecher } from '../../speecher/entities/speecher.entity';
 import { randomUUID } from 'crypto';
+import { CreateHeventSpeecherDto } from '../../speecher/dto/create-hevent-speecher.dto';
 
 export class CreateHeventDto extends Hevent {
     @IsNotEmpty()
@@ -17,5 +17,5 @@ export class CreateHeventDto extends Hevent {
     amountOfPeople: number;
 
     @ApiProperty({ example: [randomUUID()] })
-    speechers?: Speecher[];
+    speechers?: CreateHeventSpeecherDto[];
 }
