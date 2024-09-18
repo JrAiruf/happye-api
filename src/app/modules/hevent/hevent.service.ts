@@ -12,11 +12,20 @@ export class HeventService {
     private readonly repository: Repository<Hevent>
   ) { }
 
-  
   async create(hevent: Hevent): Promise<Hevent | null> {
     try {
       const newHevent = this.repository.create(hevent);
-      return await this.repository.save(newHevent);
+      await this.repository.save(newHevent);
+
+      const createdHevent = await this.repository.findOne({
+        where: {
+          id: hevent.id
+        }, relations: {
+          speechers: true
+        }
+      });
+
+      return createdHevent;
     } catch (error) {
       return null;
     }
