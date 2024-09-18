@@ -2,6 +2,7 @@ import { Speecher } from '../../speecher/entities/speecher.entity';
 import {
     Entity,
     Column,
+    CreateDateColumn,
     PrimaryGeneratedColumn,
     ManyToMany,
     JoinTable
@@ -9,6 +10,7 @@ import {
 
 @Entity('events')
 export class Hevent {
+
     @PrimaryGeneratedColumn('uuid')
     id: string
     @Column()
@@ -17,9 +19,9 @@ export class Hevent {
     urlImage?: string
     @Column()
     description?: string
-    @Column({ type: 'date' })
+    @CreateDateColumn({ generated: true })
     eventDate: Date
-    @Column({ type: 'datetime' })
+    @CreateDateColumn({ generated: true })
     eventHour: Date
     @Column()
     amountOfPeople: number

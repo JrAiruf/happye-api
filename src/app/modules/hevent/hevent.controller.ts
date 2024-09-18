@@ -1,10 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ClassSerializerInterceptor, UseInterceptors } from '@nestjs/common';
 import { HeventService } from './hevent.service';
 import { CreateHeventDto } from './dto/create-hevent.dto';
 import { UpdateHeventDto } from './dto/update-hevent.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { Hevent } from './entities/hevent.entity';
 
 @ApiTags("Hevent")
+@UseInterceptors(ClassSerializerInterceptor)
 @Controller({
   version: '1',
   path: 'hevent'
@@ -13,8 +15,8 @@ export class HeventController {
   constructor(private readonly heventService: HeventService) { }
 
   @Post()
-  create(@Body() createHeventDto: CreateHeventDto) {
-    return this.heventService.create(createHeventDto);
+  async create(@Body() createHeventDto: CreateHeventDto) {
+    return await this.heventService.create(createHeventDto);
   }
 
   @Get()
