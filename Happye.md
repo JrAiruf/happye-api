@@ -2,7 +2,10 @@
 
 ## :card_file_box: Nest Js Server Side Application :card_file_box:
 
-As this project runs in a node environment, you must have Node Js installed on your machine, or docker desktop installed. Is up to you! In the next sections this documentation will guide you to execute the project with both, `NPM` or `Docker`
+As this project runs in a node environment, you must have Node Js installed on your machine, or docker desktop installed. Is up to you! In the next sections this documentation will guide you to execute the project with both:
+
+### :whale: [Docker](#using-docker)
+### :computer: [NPM - Node](#using-npm)
 
 - You can download Node here: [download Node](https://nodejs.org/en/download/prebuilt-installer)
 - And Docker Desktop right here : [download Docker](https://www.docker.com/products/docker-desktop/)
@@ -11,7 +14,7 @@ As this project runs in a node environment, you must have Node Js installed on y
 
 # :rocket: Launching :rocket:
 
-## With Docker :whale:
+## Using Docker
 
 ### #1 Step:
 
@@ -71,7 +74,7 @@ You'll be able to access the application in the port specified in `APPLICATION_P
     http://localhost:{{APPLICATION_PORT}}/endpoint_name
 
 
-## With NPM :computer: 
+## Using NPM
 
 ### #1 Step:
 
