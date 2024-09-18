@@ -19,22 +19,21 @@ export class HeventService {
       const newHevent = this.repository.create(hevent);
       await this.repository.save(newHevent);
 
-      const createdHevent = await this.repository.findOne({
-        where: {
-          id: hevent.id
-        }, relations: {
-          speechers: true
-        }
-      });
-
-      return createdHevent;
+      return newHevent;
     } catch (error) {
       throw new BadRequestException('Hevent creation failed! Please verify the sended data.');
     }
   }
 
-  findAll() {
-    return `This action returns all hevent`;
+  async findAll(): Promise<Hevent[]> {
+    return await this.repository.find({
+      loadEagerRelations: false,
+      order: {
+        title: {
+          direction: 'ASC'
+        }
+      }
+    });
   }
 
   findOne(id: number) {
