@@ -5,21 +5,21 @@ import { Speecher } from '../speecher/entities/speecher.entity';
 
 @Module({
     imports: [
-        TypeOrmModule.forRoot({
+    TypeOrmModule.forRoot({
             type: 'mysql',
-            host: process.env["HOST"],
-            port: Number.parseInt(process.env["DBPORT"]),
-            username: process.env["USERNAME"],
-            password: process.env["PASSWORD"],
-            database: process.env["DATABASE"],
+            host: "localhost",
+            port: 3306,
+            username: "jradmin",
+            password: "12345678",
+            database: "happyeDb",
             entities: [
                 Hevent,
                 Speecher
             ],
-            synchronize: Boolean(process.env["DATABASE_SYNC"]),
+            synchronize: true,
             logging: true,
             logger: 'advanced-console'
-        })
+        }) 
     ]
 })
 

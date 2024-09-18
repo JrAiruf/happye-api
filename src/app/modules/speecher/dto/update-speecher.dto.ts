@@ -1,4 +1,4 @@
 import { PartialType } from '@nestjs/mapped-types';
-import { CreateSpeecherDto } from './create-speecher.dto';
+import { CreateHeventSpeecherDto } from './create-hevent-speecher.dto';
 
-export class UpdateSpeecherDto extends PartialType(CreateSpeecherDto) {}
+export class UpdateSpeecherDto extends PartialType(CreateHeventSpeecherDto) { }
