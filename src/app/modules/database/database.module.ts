@@ -5,7 +5,7 @@ import { Speecher } from '../speecher/entities/speecher.entity';
 
 @Module({
     imports: [
-    TypeOrmModule.forRoot({
+        TypeOrmModule.forRoot({
             type: 'mysql',
             host: "localhost",
             port: 3306,
@@ -19,7 +19,7 @@ import { Speecher } from '../speecher/entities/speecher.entity';
             synchronize: true,
             logging: true,
             logger: 'advanced-console'
-        }) 
+        })
     ]
 })
 
