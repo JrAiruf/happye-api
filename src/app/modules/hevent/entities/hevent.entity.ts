@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Speecher } from '../../speecher/entities/speecher.entity';
+import {
+    Entity,
+    Column,
+    PrimaryGeneratedColumn,
+    ManyToMany,
+    JoinTable
+} from 'typeorm';
 
 @Entity('events')
 export class Hevent {
@@ -16,4 +23,7 @@ export class Hevent {
     eventHour: Date
     @Column()
     amountOfPeople: number
+    @ManyToMany(() => Speecher, { cascade: true })
+    @JoinTable()
+    speechers?: Speecher[]
 }
