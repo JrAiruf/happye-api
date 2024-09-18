@@ -8,7 +8,7 @@ import {
     JoinTable
 } from 'typeorm';
 
-@Entity('events')
+@Entity('hevent')
 export class Hevent {
 
     @PrimaryGeneratedColumn('uuid')
@@ -16,16 +16,18 @@ export class Hevent {
     @Column()
     title: string
     @Column()
+    local: string
+    @Column()
     urlImage?: string
     @Column()
     description?: string
-    @CreateDateColumn({ generated: true })
+    @CreateDateColumn()
     eventDate: Date
-    @CreateDateColumn({ generated: true })
+    @CreateDateColumn()
     eventHour: Date
     @Column()
     amountOfPeople: number
-    @ManyToMany(() => Speecher, { cascade: true })
+    @ManyToMany(() => Speecher, { eager: true, cascade: true })
     @JoinTable()
     speechers?: Speecher[]
 }

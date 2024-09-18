@@ -8,17 +8,20 @@ export class CreateHeventDto extends Hevent {
     @ApiProperty({ example: 'Hevent title' })
     title: string;
 
+    @ApiProperty({ example: 'Hevent local' })
+    local: string;
+
     @ApiProperty({ example: 'Hevent description' })
     description?: string;
 
     @ApiProperty({ example: 'https://urlimage' })
     urlImage?: string;
 
-    @ApiProperty({ example: 'dd-mm-yyyy' })
+    @ApiProperty({ example: '2024-01-01T09:00:00' })
     @IsNotEmpty()
     eventDate: Date;
 
-    @ApiProperty({ example: 'dd-mm-yyyyThh:mm:ss' })
+    @ApiProperty({ example: '2024-01-01T09:00:00' })
     @IsNotEmpty()
     eventHour: Date;
 
@@ -26,6 +29,6 @@ export class CreateHeventDto extends Hevent {
     @ApiProperty({ example: 100 })
     amountOfPeople: number;
 
-    @ApiProperty({ example: [] })
+    @ApiProperty({ type: () => CreateHeventSpeecherDto, isArray: true })
     speechers?: CreateHeventSpeecherDto[];
 }

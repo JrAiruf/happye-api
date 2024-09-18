@@ -7,6 +7,7 @@ export const heventId = uuidv4();
 export const invalidMockHevent: Hevent = {
     id: uuidv4(),
     title: "",
+    local: "",
     urlImage: "https://example.com/invalid-event.jpg",
     description: "This event has invalid data.",
     eventDate: new Date('2023-01-01'),
@@ -18,13 +19,14 @@ export const invalidMockHevent: Hevent = {
             resume: "Speaker with invalid event.",
             about: "This speaker is associated with an invalid event.",
             events: []
-        }
+        },
     ]
 };
 
 export const mockHevent: Hevent = {
     id: heventId,
     title: "Tech Conference 2024",
+    local: "Minas Gerais",
     urlImage: "https://example.com/tech-conference-2024.jpg",
     description: "A technology conference bringing together leaders in AI, Cloud Computing, and IoT.",
     eventDate: new Date('2024-10-10'),
