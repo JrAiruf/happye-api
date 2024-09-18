@@ -3,6 +3,7 @@ import { HeventService } from './hevent.service';
 import { CreateHeventDto } from './dto/create-hevent.dto';
 import { UpdateHeventDto } from './dto/update-hevent.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { Hevent } from './entities/hevent.entity';
 
 @ApiTags("Hevent")
 @Controller({
@@ -13,13 +14,13 @@ export class HeventController {
   constructor(private readonly heventService: HeventService) { }
 
   @Post()
-  create(@Body() createHeventDto: CreateHeventDto) {
-    return this.heventService.create(createHeventDto);
+  async create(@Body() createHeventDto: CreateHeventDto) {
+    return await this.heventService.create(createHeventDto);
   }
 
   @Get()
-  findAll() {
-    return "API IS RUNNING";
+  async findAll(): Promise<Hevent[]> {
+    return this.heventService.findAll();
   }
 
   @Get(':id')
