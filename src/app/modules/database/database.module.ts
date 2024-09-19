@@ -2,10 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Hevent } from '../hevent/entities/hevent.entity';
 import { Speecher } from '../speecher/entities/speecher.entity';
-import { configDotenv } from 'dotenv';
 import { User } from '../user/entities/user.entity';
-
-configDotenv();
 
 @Module({
     imports: [
