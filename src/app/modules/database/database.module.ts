@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Hevent } from '../hevent/entities/hevent.entity';
 import { Speecher } from '../speecher/entities/speecher.entity';
 import { configDotenv } from 'dotenv';
+import { User } from '../user/entities/user.entity';
 
 configDotenv();
 
@@ -16,6 +17,7 @@ configDotenv();
             password: process.env.PASSWORD,
             database: process.env.DATABASE,
             entities: [
+                User,
                 Hevent,
                 Speecher
             ],
