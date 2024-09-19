@@ -1,11 +1,26 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+
+  constructor(
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>) {
+
+  }
+
+  async create(dto: User): Promise<User> {
+    try {
+      const newUser = await this.userRepository.create(dto);
+      await this.userRepository.save(newUser);
+      return newUser;
+    } catch (error) {
+      throw new BadRequestException('Error during register. Please, verify the sended data');
+    }
   }
 
   findAll() {
