@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Hevent } from '../../entities/hevent.entity';
+import { User } from 'src/app/modules/user/entities/user.entity';
+import { randomUUID } from 'crypto';
 
 export const heventId = uuidv4();
 // const speecherId = uuidv4();
@@ -18,7 +20,12 @@ export const invalidMockHevent: Hevent = {
             id: uuidv4(),
             resume: "Speaker with invalid event.",
             about: "This speaker is associated with an invalid event.",
-            events: []
+            events: [],
+            user: {
+                id: randomUUID(),
+                fullName: "User Name",
+                phoneNumber: "55038998809616",
+            }
         },
     ]
 };
@@ -37,13 +44,23 @@ export const mockHevent: Hevent = {
             id: uuidv4(),
             resume: "PhD in Computer Science and AI expert.",
             about: "John Doe is a leading researcher in AI with over 20 years of experience.",
-            events: []
+            events: [],
+            user: {
+                id: randomUUID(),
+                fullName: "User Name",
+                phoneNumber: "55038998809616",
+            }
         },
         {
             id: uuidv4(),
             resume: "Cloud Computing Specialist with 15 years of industry experience.",
             about: "Jane Smith has worked on major cloud platforms and helped scale enterprise systems.",
-            events: []
+            events: [],
+            user: {
+                id: randomUUID(),
+                fullName: "User Name",
+                phoneNumber: "55038998809616",
+            }
         }
     ]
 };
