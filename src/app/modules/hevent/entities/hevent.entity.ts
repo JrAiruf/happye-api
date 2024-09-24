@@ -28,13 +28,13 @@ export class Hevent {
 
     @CreateDateColumn()
     eventDate: Date
-    
+
     @CreateDateColumn()
     eventHour: Date
-    
+
     @Column()
     amountOfPeople: number
-    
+
     @ManyToMany(() => Speecher, { eager: true, cascade: true })
     @JoinTable()
     speechers?: Speecher[]

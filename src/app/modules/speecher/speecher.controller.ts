@@ -4,8 +4,11 @@ import { CreateHeventSpeecherDto } from './dto/create-hevent-speecher.dto';
 import { UpdateSpeecherDto } from './dto/update-speecher.dto';
 import { ApiTags } from '@nestjs/swagger';
 
-@Controller('speecher')
 @ApiTags('Speecher')
+@Controller({
+  version: '1',
+  path: 'speecher'
+})
 export class SpeecherController {
   constructor(private readonly speecherService: SpeecherService) { }
 

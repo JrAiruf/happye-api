@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto";
 import { User } from "../../entities/user.entity";
 import { Speecher } from "src/app/modules/speecher/entities/speecher.entity";
-import { create } from "domain";
+import { Credential } from "../../../auth/entities/credential";
 
 const userId = randomUUID();
 
@@ -10,6 +10,12 @@ export const invalidMockUser: User = {
     fullName: '',
     phoneNumber: '',
     speecher: undefined,
+    auth: {
+        id: randomUUID(),
+        email: "myemail",
+        password: "mypassword",
+        credential: Credential.user,
+    }
 };
 
 export const mockUser: User = {
@@ -20,6 +26,12 @@ export const mockUser: User = {
         id: randomUUID(),
         resume: '10 years of public speaking experience',
         about: 'Passionate about communication and leadership.',
+    },
+    auth: {
+        id: randomUUID(),
+        email: "myemail",
+        password: "mypassword",
+        credential: Credential.user,
     }
 };
 
@@ -31,6 +43,12 @@ export const mockSpeecher: Speecher = {
         id: randomUUID(),
         fullName: 'Jane Doe',
         phoneNumber: '98765432109876',
+        auth: {
+            id: randomUUID(),
+            email: "myemail",
+            password: "mypassword",
+            credential: Credential.user,
+        }
     }
 };
 
