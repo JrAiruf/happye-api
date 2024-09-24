@@ -5,8 +5,11 @@ import { UpdateSpeecherDto } from './dto/update-speecher.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateSpeecherDto } from './dto/create-speecher.dto copy';
 
-@Controller('speecher')
 @ApiTags('Speecher')
+@Controller({
+  version: '1',
+  path: 'speecher'
+})
 export class SpeecherController {
   constructor(private readonly speecherService: SpeecherService) { }
 

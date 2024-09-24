@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Hevent } from '../../entities/hevent.entity';
-import { User } from 'src/app/modules/user/entities/user.entity';
 import { randomUUID } from 'crypto';
+import { Credential } from "../../../auth/entities/credential";
+import { User } from '../../../user/entities/user.entity';
 
 export const heventId = uuidv4();
-// const speecherId = uuidv4();
 
 export const invalidMockHevent: Hevent = {
     id: uuidv4(),
@@ -25,6 +25,13 @@ export const invalidMockHevent: Hevent = {
                 id: randomUUID(),
                 fullName: "User Name",
                 phoneNumber: "55038998809616",
+                auth: {
+                    id: randomUUID(),
+                    email: "myemail",
+                    password: "mypassword",
+                    credential: Credential.user,
+                    user: new User()
+                }
             }
         },
     ]
@@ -49,6 +56,13 @@ export const mockHevent: Hevent = {
                 id: randomUUID(),
                 fullName: "User Name",
                 phoneNumber: "55038998809616",
+                auth: {
+                    id: randomUUID(),
+                    email: "myemail",
+                    password: "mypassword",
+                    credential: Credential.user,
+                    user: new User()
+                }
             }
         },
         {
@@ -60,16 +74,14 @@ export const mockHevent: Hevent = {
                 id: randomUUID(),
                 fullName: "User Name",
                 phoneNumber: "55038998809616",
+                auth: {
+                    id: randomUUID(),
+                    email: "myemail",
+                    password: "mypassword",
+                    credential: Credential.user,
+                    user: new User()
+                }
             }
         }
     ]
 };
-
-/* 
-const mockSpeecher: Speecher = {
-    id: speecherId,
-    resume: "Expert in cybersecurity and ethical hacking.",
-    about: "Alice Johnson has been working in cybersecurity for over 10 years and frequently speaks at global conferences.",
-    events: [] // This can include related Hevent objects.
-};
- */

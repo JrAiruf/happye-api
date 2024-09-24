@@ -5,8 +5,11 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { User } from './entities/user.entity';
 
-@Controller('user')
 @ApiTags('User')
+@Controller({
+  version: '1',
+  path: 'user'
+})
 export class UserController {
   constructor(private readonly userService: UserService) { }
 

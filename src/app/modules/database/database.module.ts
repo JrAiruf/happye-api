@@ -4,6 +4,7 @@ import { Hevent } from '../hevent/entities/hevent.entity';
 import { Speecher } from '../speecher/entities/speecher.entity';
 import { User } from '../user/entities/user.entity';
 import { Batch } from '../hevent/entities/batch.entity';
+import { Auth } from '../auth/entities/auth.entity';
 
 @Module({
     imports: [
@@ -15,6 +16,7 @@ import { Batch } from '../hevent/entities/batch.entity';
             password: process.env.PASSWORD,
             database: process.env.DATABASE,
             entities: [
+                Auth,
                 User,
                 Batch,
                 Hevent,
