@@ -20,6 +20,11 @@ export const mockUser: User = {
         id: randomUUID(),
         resume: '10 years of public speaking experience',
         about: 'Passionate about communication and leadership.',
+        user: {
+            id: userId,
+            fullName: "Full Username",
+            phoneNumber: "55084388273829"
+        }
     }
 };
 

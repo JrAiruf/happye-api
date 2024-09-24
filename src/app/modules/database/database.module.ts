@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Hevent } from '../hevent/entities/hevent.entity';
 import { Speecher } from '../speecher/entities/speecher.entity';
 import { User } from '../user/entities/user.entity';
+import { Batch } from '../hevent/entities/batch.entity';
 
 @Module({
     imports: [
@@ -15,6 +16,7 @@ import { User } from '../user/entities/user.entity';
             database: process.env.DATABASE,
             entities: [
                 User,
+                Batch,
                 Hevent,
                 Speecher
             ],

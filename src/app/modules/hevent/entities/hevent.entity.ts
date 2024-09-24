@@ -7,6 +7,7 @@ import {
     ManyToMany,
     JoinTable
 } from 'typeorm';
+import { Batch } from './batch.entity';
 
 @Entity('hevent')
 export class Hevent {
@@ -28,14 +29,18 @@ export class Hevent {
 
     @CreateDateColumn()
     eventDate: Date
-    
+
     @CreateDateColumn()
     eventHour: Date
-    
+
     @Column()
     amountOfPeople: number
-    
+
     @ManyToMany(() => Speecher, { eager: true, cascade: true })
     @JoinTable()
-    speechers?: Speecher[]
+    speechers: Speecher[]
+
+    @ManyToMany(() => Batch, { eager: true, cascade: true })
+    @JoinTable()
+    batches?: Batch[]
 }

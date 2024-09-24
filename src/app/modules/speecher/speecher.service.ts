@@ -1,20 +1,35 @@
-import { Injectable } from '@nestjs/common';
-import { CreateHeventSpeecherDto } from './dto/create-hevent-speecher.dto';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { UpdateSpeecherDto } from './dto/update-speecher.dto';
 import { Speecher } from './entities/speecher.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { User } from '../user/entities/user.entity';
 
 @Injectable()
 export class SpeecherService {
 
   constructor(
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
     @InjectRepository(Speecher)
-    private readonly speecherRepository: Repository<Speecher>) {
+    private readonly speecherRepository: Repository<Speecher>
+  ) {
 
   }
-  create(createSpeecherDto: CreateHeventSpeecherDto) {
-    return 'This action adds a new speecher';
+  async create(dto: Speecher): Promise<Speecher> {
+    try {
+      const user = await this.userRepository.findOne({
+        where: { id: dto.user.id }
+      })
+      if (!user) {
+        throw new NotFoundException(`User not found. Id: ${dto.user.id}`);
+      }
+      const newSpeecher = await this.speecherRepository.create(dto);
+      return await this.speecherRepository.save(newSpeecher);
+
+    } catch (error) {
+      throw new BadRequestException('Speecher creation failed! Please verify the sended data.');
+    }
   }
 
   async findAll(): Promise<Speecher[]> {

@@ -13,9 +13,12 @@ export class Speecher {
     @Column()
     about?: string
 
+    @Column({ nullable: true })
+    urlImage?: string
+
     @ManyToMany(() => Hevent)
     events?: Hevent[]
 
     @OneToOne(() => User)
-    user?: User
+    user: User
 }

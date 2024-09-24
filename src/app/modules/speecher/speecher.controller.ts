@@ -3,14 +3,20 @@ import { SpeecherService } from './speecher.service';
 import { CreateHeventSpeecherDto } from './dto/create-hevent-speecher.dto';
 import { UpdateSpeecherDto } from './dto/update-speecher.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { CreateSpeecherDto } from './dto/create-speecher.dto copy';
 
 @Controller('speecher')
 @ApiTags('Speecher')
 export class SpeecherController {
   constructor(private readonly speecherService: SpeecherService) { }
 
+  @Post('hevent')
+  createHeventSpeecher(@Body() createSpeecherDto: CreateHeventSpeecherDto) {
+    return this.speecherService.create(createSpeecherDto);
+  }
+
   @Post()
-  create(@Body() createSpeecherDto: CreateHeventSpeecherDto) {
+  create(@Body() createSpeecherDto: CreateSpeecherDto) {
     return this.speecherService.create(createSpeecherDto);
   }
 
